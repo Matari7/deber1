@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $mail = $_GET['mail'];
     
     // Preparar la consulta SQL para insertar los datos en la tabla de usuarios
-    $sql = "INSERT INTO usuarios (usuario, clave, email) VALUES ('$uname', '$pword', '$mail')";
+    $sql = "INSERT INTO users (username, clave, email) VALUES ('$uname', '$pword', '$mail')";
     
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
