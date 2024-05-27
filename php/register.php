@@ -1,9 +1,9 @@
 <?php
 // Datos de conexión a la base de datos
-$servername = "localhost"; // Cambia localhost si es necesario
-$username = "root";
-$password = "root";
-$dbname = "db";
+$servername = "mysql-matari.alwaysdata.net"; // Cambia localhost si es necesario
+$username = "matari_test";
+$password = "UniversidadCentral123*";
+$dbname = "matari_distribuida";
 
 // Conexión a la base de datos
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,6 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $uname = $_GET['uname'];
     $pword = $_GET['pword'];
     $mail = $_GET['mail'];
+
+    // Validar los datos (por ejemplo, asegurarse de que los campos no estén vacíos y el formato del correo sea válido)
+if (empty($username) || empty($password) || empty($email)) {
+    die("Por favor, complete todos los campos.");
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("El formato del correo electrónico no es válido.");
+}
     
     // Preparar la consulta SQL para insertar los datos en la tabla de usuarios
     $sql = "INSERT INTO users (username, clave, email) VALUES ('$uname', '$pword', '$mail')";
